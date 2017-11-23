@@ -59,8 +59,9 @@ public class CourseService {
     public void updateCourse(Course course,Integer tId, Integer id) {
 
         Topic t = tRepo.findOne(tId);
+        Course c = cRepo.findOne(id);
 
-        if (t!= null && t.getId() == tId && course.getId() == id)
+        if (t!= null && course == c && c.getTopic() == t)
             cRepo.save(course);
         else {
             System.out.println("Given tid:" + tId + " does not match with one in request:"+ id);

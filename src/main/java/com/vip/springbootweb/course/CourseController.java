@@ -9,8 +9,12 @@ import java.util.List;
 public class CourseController {
 
 
+    private final CourseService cService;
+
     @Autowired
-    private CourseService cService;
+    public CourseController(CourseService cService) {
+        this.cService = cService;
+    }
 
     @RequestMapping("/topics/{tId}/courses")
     public List<Course> getAllCourses(@PathVariable Integer tId) {
